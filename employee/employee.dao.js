@@ -27,4 +27,8 @@ module.exports = {
         console.log('query', query);
         return employeeModel.find(query);
     },
+    addProfileImageDao: async (id, data) => {
+        const options = {new: true}
+        return employeeModel.findByIdAndUpdate(id, data, options);
+    }
 }

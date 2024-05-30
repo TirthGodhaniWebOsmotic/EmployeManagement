@@ -32,6 +32,10 @@ const employeeSchema = new mongoose.Schema({
     isVerified: {
         type: Boolean,
         required: true
+    },
+    employee_profile: {
+        type: String,
+        required: false
     }
 });
 

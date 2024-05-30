@@ -1,6 +1,19 @@
 const {getAllEmployeeService, createEmployeeService, deleteEmployeeService, getEmployeeByFilterService, updateEmployeeService, getEmployeeService, setCompanyIdService} = require("../employee/employee.service");
 const {employeeValidationSchema} = require("./employeeValidation");
 const {successResponse, errorResponse} = require("../common/responseUtils");
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads/")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
+    }
+});
+
+const upload = multer({ storage: storage }).single("user_profile");
 
 module.exports = {
     getAllEmployeeList: async (req, res, next) => {
@@ -34,11 +47,15 @@ module.exports = {
     },
     createEmployee: async (req, res, next) => {
         try {
+            if(!req.files) {
+                errorResponse(res, 400, 'No File Upload');
+            }
             const {error, value} = employeeValidationSchema.validate(req.body);
             if (error) {
                 errorResponse(res, 400, error.message);
             }
-            const result = await createEmployeeService(value);
+            const payload  = {...value, employee_profile: req.files['employee_profile'][0]['path']}   
+            const result = await createEmployeeService(payload);
             successResponse(res, result, 201);
         } catch (err) {
             errorResponse(res, 400, err.message);
@@ -72,5 +89,16 @@ module.exports = {
             errorResponse(res, 400, err.message);
         }
     },
-
+    uploadEmployeeProfileImage: async (req, res, next) => {
+        upload(req, res, function (err) {
+            if (err instanceof multer.MulterError) {
+                errorResponse(res, 500, err.message);
+            } else if (err) {
+                errorResponse(res, 500, err.message);
+            } else {
+                const fileName = req.file.originalname;
+                successResponse(res, { message: 'File uploaded successfully' }, 200);
+            }
+        });
+    }
 }
