@@ -1,0 +1,94 @@
+### Register route
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "testuser1@gmail.com",
+  "password": "1234"
+}
+
+
+### Login route
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "testuser1@gmail.com",
+  "password": "1234"
+}
+
+
+### get all company list
+GET http://localhost:3000/companies
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTI5ODc2OTMsImV4cCI6MTcxMjk4NzcwOCwiYXVkIjoiNjYxYTE2Y2M2NmZiNGVlOWEzZjQ0ODk1IiwiaXNzIjoidGVzdE1pbmUuY29tIn0.kv8gzS3uObmQ-yNBsGAxQ90Lpd51syUyMv2CJRQWkNA
+
+### create a new company
+POST http://localhost:3000/companies
+Content-Type: application/json
+
+{
+  "name": "Test1",
+  "email": "sales@narola4.com",
+  "address": {
+    "line1": "1109-1113",
+    "line2": "Velocity",
+    "city": "Surat",
+    "state": "Gujarat",
+    "country": "Bharat",
+    "zip": "395009"
+  },
+  "contact": 9879585789,
+  "status": "ACTIVE"
+}
+
+### get company by Id
+GET http://localhost:3000/companies/65ec05ab5f86e7441174e52d
+
+### delete company by Id
+DELETE http://localhost:3000/companies/65ec05ab5f86e7441174e52d
+
+### update company
+PATCH http://localhost:3000/companies/65ec2ca477ccea335b41de21
+Content-Type: application/json
+
+{
+  "name": "Test 9",
+  "contact": 9879585789,
+  "status": "INACTIVE"
+}
+
+### get all employee list
+GET http://localhost:3000/employee
+
+### create a new employee
+POST http://localhost:3000/employee
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTI5ODg4NTQsImV4cCI6MTcxMjk5MDY1NCwiYXVkIjoiNjYxYTE2Y2M2NmZiNGVlOWEzZjQ0ODk1IiwiaXNzIjoidGVzdE1pbmUuY29tIn0.lF54J2NxScq00DZArdKJvbFoOmaSaGf5z5Tw3S8thjI
+
+{
+  "firstName": "PM_1",
+  "lastName": "WO",
+  "email": "emp@6sq.com",
+  "password": "emp@1234",
+  "designation": "DEVELOPER",
+  "isVerified": "true"
+}
+
+### get Employee by Id
+GET http://localhost:3000/employee/65f16566eb8c884b9aaa57aa
+
+### delete employee by Id
+DELETE http://localhost:3000/employee/65f16566eb8c884b9aaa57aae
+
+### update employee
+PATCH http://localhost:3000/employee/661a26f309c74882f458df35
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTI5ODg4NTQsImV4cCI6MTcxMjk5MDY1NCwiYXVkIjoiNjYxYTE2Y2M2NmZiNGVlOWEzZjQ0ODk1IiwiaXNzIjoidGVzdE1pbmUuY29tIn0.lF54J2NxScq00DZArdKJvbFoOmaSaGf5z5Tw3S8thjI
+
+{
+  "companyId": "123"
+}
+
+### get all employee list with filters
+GET http://localhost:3000/employee?email=emp@6.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTI5ODg4NTQsImV4cCI6MTcxMjk5MDY1NCwiYXVkIjoiNjYxYTE2Y2M2NmZiNGVlOWEzZjQ0ODk1IiwiaXNzIjoidGVzdE1pbmUuY29tIn0.lF54J2NxScq00DZArdKJvbFoOmaSaGf5z5Tw3S8thjI
