@@ -21,7 +21,9 @@ const employeeValidationSchema = Joi.object({
         'any.required': `"Password" is a required field`
     }),
     designation: Joi.string().valid('MANAGER', 'TEAM_LEADER', 'DEVELOPER').required(),
-    companyId: Joi.string().optional(),
+    companyId: Joi.alternatives().try(Joi.string(), Joi.allow(null)).optional().messages({
+        'alternatives.types': `"Company ID" should be a type of 'text' or 'null'`
+    }),
     isVerified: Joi.boolean().required()
 });
 
