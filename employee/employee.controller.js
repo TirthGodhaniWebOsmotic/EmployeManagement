@@ -3,6 +3,7 @@ const {employeeValidationSchema} = require("./employeeValidation");
 const {successResponse, errorResponse} = require("../common/responseUtils");
 const multer = require('multer');
 const path = require('path');
+const logger = require('../logger');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,6 +18,7 @@ const upload = multer({ storage: storage }).single("user_profile");
 
 module.exports = {
     getAllEmployeeList: async (req, res, next) => {
+        logger.info('This is an info log');
         try {
             const filters = {};
             let result;

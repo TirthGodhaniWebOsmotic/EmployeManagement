@@ -75,7 +75,7 @@ module.exports = {
     getCompaniesByFilterService: async (filters) => {
         try {
             let company = await getCompanyByFilterDao(filters);
-            console.log('company', !company)
+            // console.log('company', !company)
             if (!company || !company?.length) {
                 throw {
                     status: 400,

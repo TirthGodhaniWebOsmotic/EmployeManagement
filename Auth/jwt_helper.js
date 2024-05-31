@@ -39,7 +39,7 @@ module.exports = {
             issuer: "testMine.com",
             audience: userId
         };
-        console.log({payload, secret, options});
+        // console.log({payload, secret, options});
         return generateToken(payload, secret, options);
     },
 

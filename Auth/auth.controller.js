@@ -24,7 +24,7 @@ module.exports = {
 
             const accessToken = await signAccessToken(savedUser.id);
             const refreshToken = await signRefreshToken(savedUser.id);
-            console.log({accessToken});
+            // console.log({accessToken});
             res.send({accessToken, refreshToken});
         } catch (err) {
             next(err);
@@ -40,7 +40,7 @@ module.exports = {
             if (!isMatch) throw createError.Unauthorized('Username/password not valid');
             const accessToken = await signAccessToken(user.id)
             const refreshToken = await signRefreshToken(user.id);
-            console.log({accessToken, refreshToken});
+            // console.log({accessToken, refreshToken});
             res.send({accessToken, refreshToken});
         } catch (error) {
             if (error.isJoi === true) return next(createError.BadRequest("Invalid Username/Password"))

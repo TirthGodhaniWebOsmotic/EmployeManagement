@@ -4,7 +4,7 @@ module.exports = {
         try {
             return await employeeModel.aggregate(pipeline);
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     },
     getEmployeeDao: async (query) => {
@@ -24,7 +24,7 @@ module.exports = {
         return employeeModel.findByIdAndUpdate(id, data, options);
     },
     getEmployeeByFilterDao: async (query) => {
-        console.log('query', query);
+        // console.log('query', query);
         return employeeModel.find(query);
     },
     addProfileImageDao: async (id, data) => {

@@ -4,7 +4,7 @@ module.exports = {
         try {
             return await companyModel.aggregate(pipeline);
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     },
     getCompanyDao: async (query) => {
@@ -24,7 +24,7 @@ module.exports = {
         return companyModel.findByIdAndUpdate(id, data, options);
     },
     getCompanyByFilterDao: async (query) => {
-        console.log('query', query);
+        // console.log('query', query);
         return companyModel.find(query);
     },
 }

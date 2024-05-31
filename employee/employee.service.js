@@ -67,7 +67,7 @@ module.exports = {
             // return await updateEmployeeDao(id, data);
 
             const updatedData = await updateEmployeeDao(id, data);
-            console.log('Updated data:', updatedData); // Check if updatedData is received
+            // console.log('Updated data:', updatedData); // Check if updatedData is received
 
             if (!updatedData) {
                 throw new Error('Employee not found or could not be updated');
@@ -83,7 +83,7 @@ module.exports = {
     getEmployeeByFilterService: async (filters) => {
         try {
             let employee = await getEmployeeByFilterDao(filters);
-            console.log('employee', !employee)
+            // console.log('employee', !employee)
             if (!employee || !employee?.length) {
                 throw {
                     status: 400,

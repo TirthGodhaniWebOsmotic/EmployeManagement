@@ -24,10 +24,10 @@ module.exports = {
             if (Object.keys(filters).length === 0) {
                 result = await getAllCompaniesService();
             } else {
-                console.log('filters ==>', filters)
+                // console.log('filters ==>', filters)
                 result = await getCompaniesByFilterService(filters);
             }
-            console.log('result ==>', result);
+            // console.log('result ==>', result);
             successResponse(res, result, 200);
         } catch (err) {
             errorResponse(res, 400, err.message);
